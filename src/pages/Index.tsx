@@ -18,9 +18,12 @@ const Index = () => {
     }, 500);
   };
 
- const handleComplete = () => {
-  const finalUrl = addSourceToUrl(" https://glitchy.go2cloud.org/aff_c?offer_id=1520&aff_id=1497");
-  window.open(finalUrl, "_blank");
+const handleComplete = () => {
+  if (typeof window !== 'undefined' && window.ttq) {
+    window.ttq.track('CompleteRegistration');
+  }
+  const finalUrl = addSourceToUrl("https://glitchy.go2cloud.org/aff_c?offer_id=1520&aff_id=1497");
+  window.location.href = finalUrl;
 };
 
   const progress = currentStep === 0 ? 25 : currentStep === 1 ? 75 : 100;
